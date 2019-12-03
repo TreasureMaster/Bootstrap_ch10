@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DashBoard Chapter 9 Bootstrap</title>
+  <!-- Bootstrap 4 CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Фонт Awesome -->
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="CSS/base_ch10.css">
+</head>
+<body>
+  <!-- Блок скрытия загрузки страницы -->
+  <div class="loading">
+    
+  </div>
+
+  <!-- Навигационная панель -->
+
+  <!-- В B4 используется класс .sticky-top вместо .navbar-fixed-top для фиксации навпанели вверху экрана -->
+
+    <nav class="navbar sticky-top navbar-expand-sm navbar-light bg-light">
+          <!-- В B-4 не нужно помещать содержимое navbar в контейнер -->
+          <div class="col-sm-3 top-left-menu d-flex">
+            <!-- Класс .navbar-header в B3 это просто плавающий блок float: left -->
+            <!-- В B4 убрать ??? -->
+            <!-- <div class="navbar-header"> -->
+  
+              <a href="#" class="navbar-brand">
+                <h1>dashboard</h1>
+              </a>
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-menu"
+                      aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+  
+            <a href="#" class="header-refresh ml-auto btn btn-link" role="button"
+                data-toggle="tooltip" data-placement="bottom" data-delay="500" title="Refresh data">
+                <!-- B-4 рекомендует использовать span вместо i в font-awesome -->
+              <span class="fa fa-repeat"></span>
+            </a>
+  
+          </div>
+  
+          <form id="search" class="col-sm-3 d-none d-sm-block" role="search">
+            <!-- Псевдокласс CSS :focus-within меняет стиль родительского элемента, если внутри него какой-либо элемент получает фокус -->
+            <!-- Только новые браузеры !!! -->
+            <div class="input-group transition">
+              <div class="input-group-prepend">
+                <!-- Для центрирования нужно убрать display: inline-block, который находиться в классе .fa ,
+                     и вернуть display: flex , который был в классе .input-group-text -->
+                <span class="fa fa-search input-group-text d-flex" aria-hidden="true" id="search-addon1"></span>
+              </div>
+              <input type="text" class="form-control transition" placeholder="Search..." id="input-search"
+                      aria-label="Search" aria-describedby="search-addon1">
+            </div>
+          </form>
+  
+          <div id="nav-menu" class="collapse navbar-collapse justify-content-end">
+            <ul class="nav navbar-nav">
+              <li class="nav-item">
+                <div id="btn-notifications" class="btn-group">
+                  
+                  <button type="button" class="btn btn-link dropdown-toggle caret-off"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Notifications
+                  </button>
+                  <span class="badge badge-pill badge-danger">3</span>
+  
+                  <!-- Класс .dropdown-menu-right - меню расположено справа, т.е. выпадение левее -->
+                  <ul id="notification-list" class="dropdown-menu dropdown-menu-right">
+                    <li>
+                      <a href="#">
+                        <span class="badge badge-pill badge-danger"></span>
+                        <img src="imgs/laika.jpg" alt="" class="rounded-circle">
+                        <div class="notification-message">
+                          <strong>Laika</strong>
+                          <p>Hey! How are you?</p>
+                          <em class="since">2h ago</em>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span class="badge badge-pill badge-danger"></span>
+                        <img src="imgs/cat.jpg" alt="" class="rounded-circle">
+                        <div class="notification-message">
+                          <strong>Devil cat</strong>
+                          <p>I will never forgive you...</p>
+                          <em class="since">6h ago</em>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span class="badge badge-pill badge-danger"></span>
+                        <img src="imgs/doge.jpg" alt="" class="rounded-circle">
+                        <div class="notification-message">
+                          <strong>Doge</strong>
+                          <p>What are you doing? So scare. It's alright now.</p>
+                          <em class="since">yesterday</em>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+  
+            <div id="nav-profile" class="btn-group">
+              <button type="button" class="btn btn-link dropdown-toggle caret-off"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="imgs/jon.png" alt="Jon" class="img-thumbnail rounded-circle">
+              </button>
+  
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                  <a href="#" class="transition">Profile</a>
+                </li>
+                <li>
+                  <a href="#" class="transition">Settings</a>
+                </li>
+                <li class="dropdown-divider"></li>
+                <li>
+                  <a href="#" class="transition">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+    </nav>
+
+
+  <!-- Основной раздел -->
+
+  <div class="container-fluid">
+    <div class="row">
+      <div id="side-menu" class="col-sm-3 d-none d-sm-block">
+        <div class="leftside-block">
+          <div class="profile-block">
+            <img src="imgs/jon.png" alt="Jon" class="rounded-circle">
+            <h4 class="profile-title">Jonny Doo <small>@jonnydoo</small></h4>
+          </div>
+  
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a href="#" class="nav-link transition">
+                <span class="fa fa-home fa-fw" aria-hidden="true"></span>
+                Overview
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link transition">
+                <span class="fa fa-user fa-fw" aria-hidden="true"></span>
+                Audience
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#finances-opts" class="nav-link transition" role="button"
+                  data-toggle="collapse" aria-expanded="false" aria-controls="finances-opts">
+                <span class="fa fa-usd fa-fw" aria-hidden="true"></span>
+                Finances
+                <span class="fa fa-chevron-right transition pull-right" aria-hidden="true"></span>
+              </a>
+              <ul class="collapse list-unstyled" id="finances-opts">
+                <li>
+                  <a href="#" class="transition">Incomes</a>
+                </li>
+                <li>
+                  <a href="#" class="transition">Outcomes</a>
+                </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link transition">
+                <span class="fa fa-clock-o fa-flip-horizontal fa-fw" aria-hidden="true"></span>
+                Real time
+                <span class="badge badge-pill badge-success pull-right">12</span>
+              </a>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li class="nav-item">
+              <a href="#projects-opts" class="nav-link transition" role="button"
+                  data-toggle="collapse" aria-expanded="false" aria-controls="projects-opts">
+                <span class="fa fa-briefcase fa-fw" aria-hidden="true"></span>
+                Projects
+                <span class="fa fa-chevron-right transition pull-right" aria-hidden="true"></span>
+              </a>
+              <ul id="projects-opts" class="collapse list-unstyled">
+                <li>
+                  <a href="#" class="transition">
+                    Free ration nation
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="transition">
+                    Cats going crazy
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div> <!-- end of #side-menu -->
+
+      <div id="main" class="col-sm-9">
+        <!-- Дополнительный div для выравнивания flex-элементов .card при растягивании левого меню #side-menu -->
+        <div id="main-block">
+          <!-- Модуль Easy Pie Chart -->
+          <div id="pie-charts" class="card">
+            <div class="card-block">
+              <h2>Overall analysis</h2>
+              <div class="round-chart" data-percent="42">
+                <span>
+                  42
+                  <small>
+                    % <br>
+                    recurring
+                  </small>
+                </span>
+              </div>
+              <div class="round-chart" data-percent="87">
+                <span>
+                  87
+                  <small>
+                    % <br>
+                    aware
+                  </small>
+                </span>
+              </div>
+            </div>
+          </div>
+  
+          <div id="quick-info" class="card">
+            <div class="card-block">
+              <h2>Quick stats</h2>
+              <div class="quick-stats">
+                <strong>Today:</strong>
+                <span>78</span>
+              </div>
+              <div class="quick-stats">
+                <strong>This month:</strong>
+                <span>459</span>
+              </div>
+              <div class="quick-stats">
+                <strong>Bounce rate:</strong>
+                <span>81.08%</span>
+              </div>
+              <div class="quick-stats">
+                <strong>Session duration:</strong>
+                <span>00:01:41</span>
+              </div>
+              <div class="quick-stats">
+                <strong>New session:</strong>
+                <span>63.86%</span>
+              </div>
+            </div> <!-- end of .card-block -->
+          </div> <!-- end of #quick-info -->
+
+          <!-- Радиальная диаграмма Highcharts -->
+          <div id="performance-eval" class="card">
+            <div class="card-block">
+              <h2>Performance evaluation</h2>
+              <div class="spider-chart"></div>
+            </div>
+          </div>
+
+        </div> <!-- end of .main-block -->
+        </div> <!-- end of #main -->
+    </div> <!-- end of .row основного раздела-->
+  </div> <!-- end of .container-fluid основного раздела -->
+
+<!-- ------------------------------- Скрипты ------------------------------- -->
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<!-- Модальные панели и всплывающие подсказки -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<!-- Скрипты Bootstrap 4 -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+<!-- Круговые диаграммы Easy Pie Chart -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"
+  integrity="sha256-stt+EnBNy0H+ealqfrCPgW4loW3U+pe7JuZhh4ngy4o=" crossorigin="anonymous"></script>
+<!-- Радиальные диаграммы Highcharts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/7.2.0/highcharts.js"
+  integrity="sha256-pWlJ6y5bcww1f1YFl+ak3DjzWUFtLTiy1u1amuLuSfA=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/7.2.0/highcharts-more.js"
+  integrity="sha256-OwtUS01uzj8BVU3iLGBwTLx6kE8+s0o/89Ce/nZMfKg=" crossorigin="anonymous"></script>
+<!-- Скрипт Font Awesome -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js"
+  integrity="sha256-2JRzNxMJiS0aHOJjG+liqsEOuBb6++9cY4dSOyiijX4=" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/fontawesome.js"
+  integrity="sha256-CfCEIeLBlKY5VZMluECsaKs5O74E/lSeRag1WJe1Pzs=" crossorigin="anonymous"></script> -->
+<!-- Рабочий скрипт -->
+<script src="JS/main_dashboard_ch10.js"></script>
+</body>
+</html>
