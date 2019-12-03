@@ -107,4 +107,77 @@ $(document).ready(function() {
       color: '#f35958'
     }]
   });
+
+  // Инициализация плагина switchery
+  var elems, switcheryOpts;
+  // Находим элементы с классом .switchery
+  elems = Array.prototype.slice.call(document.querySelectorAll('.switchery'));
+  // В опциях определяем только цвет элемента (можно определять размер size, скорость анимации speed,
+  // различные цвета secondaryColor, jackColor, jackSecondaryColor, подключать стилизацию className,
+  // доступен или нет элемент disabled, прозрачность недоступного элемента disabledOpacity)
+  switcheryOpts = {
+    color: '#1bc98e'
+  };
+  // Инициализация объектов Switchery
+  elems.forEach(function(el) {
+    var switchery = new Switchery(el, switcheryOpts);
+  });
+
+  // Анимация процента свободного пространства
+  var changeMultiplier = 0.2;
+  window.setInterval (function() {
+    let freeSpacePercentage, delta;
+
+    freeSpacePercentage = $('#free-space').text();
+    freeSpacePercentage = parseFloat (freeSpacePercentage);
+    delta = changeMultiplier * (Math.random() < 0.5 ? -1.0 : 1.0);
+    freeSpacePercentage = freeSpacePercentage + freeSpacePercentage * delta;
+    freeSpacePercentage = parseInt (freeSpacePercentage);
+    $('#free-space').text(freeSpacePercentage + '%');
+  }, 3000);
+
+  // Круговая диаграмма Highcharts
+  $('.area-chart', '#daily-usage').highcharts({
+    // Основной заголовок
+    title: {
+      // текст заголовка
+      text: ''
+    },
+    // всплывающие подсказки
+    tooltip: {
+      // HTML-форматирование вывода (непонятно сокращение, выводит странную информацию)
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    // объект-оболочка для каждого типа конфигурации серии
+    plotOptions: {
+      // Параметры круговой диаграммы
+      pie: {
+        // Опции для меток данных серии, опявляющихся рядом с каждой точкой данных
+        dataLabels: {
+          // не описано в документации
+          enabled: true,
+          // Стили меток
+          style: {
+            // Толщина текста (также используются color, fontSize и textOutline)
+            fontWeight: '300'
+          }
+        }
+      }
+    },
+    // Описание серий и данных для них для каждого типа в API
+    series: [{
+      // Тип серии
+      type: 'pie',
+      // Имя серии, показываемое в легенде и всплывающих подсказках
+      name: 'Time share',
+      // Массив данных точек для серии
+      data: [
+        ['Front yard', 10.38],
+        ['Closet', 26.33],
+        ['Swim pool', 51.03],
+        ['Like a boss', 4.77],
+        ['Barking', 3.93]
+      ]
+    }]
+  });
 });

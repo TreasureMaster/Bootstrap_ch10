@@ -318,6 +318,42 @@ nav a.header-refresh:hover {
   color: #8b91a0;
 }
 
+/* Стли блока линейной диаграммы */
+#ration-stock .stacked-area {
+  height: 200px;
+}
+#ration-stock .switch {
+  font-weight: 300;
+  color: #8b91a0;
+  padding: 0.5rem 0;
+}
+#ration-stock .switchery {
+  float: right;
+}
+
+/* Стили информационной карточки */
+#real-time li {
+  font-size: 1.8rem;
+  font-weight: 300;
+  border-bottom: 0.1rem solid #e5e9ec;
+  padding: 0.5rem 0;
+}
+#real-time .badge.ok {
+  background-color: #1bc98e;
+}
+#real-time .badge span,
+#real-time .badge {
+  color: #fff;
+}
+#real-time .badge {
+  margin-top: 0.25rem;
+}
+
+/* Стили круговой диаграммы Highcharts */
+#daily-usage .area-chart {
+  height: 200px;
+}
+
 /* Блок скрытия загрузки страницы */
 .loading {
   position: fixed;
