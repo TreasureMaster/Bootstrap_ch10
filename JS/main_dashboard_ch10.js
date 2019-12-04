@@ -132,7 +132,7 @@ $(document).ready(function() {
     freeSpacePercentage = parseFloat (freeSpacePercentage);
     delta = changeMultiplier * (Math.random() < 0.5 ? -1.0 : 1.0);
     freeSpacePercentage = freeSpacePercentage + freeSpacePercentage * delta;
-    freeSpacePercentage = parseInt (freeSpacePercentage);
+    freeSpacePercentage = parseInt(freeSpacePercentage) ? parseInt(freeSpacePercentage) : 32;
     $('#free-space').text(freeSpacePercentage + '%');
   }, 3000);
 
