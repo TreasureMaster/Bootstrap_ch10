@@ -45,12 +45,12 @@ nav .top-left-menu {
   font-weight: 300;
   color: #fff;
 }
-nav .header-refresh {
+nav .header-buttons {
   color: #fff;
   font-size: 1.25rem;
   padding: .3125rem 0;
 }
-nav a.header-refresh:hover {
+nav a.header-buttons:hover {
   color: #c9c9c9;
 }
 /* Стили кнопки меню для мобильных */
@@ -89,7 +89,8 @@ nav a.header-refresh:hover {
   /* color: #fff;
   background-color: #f35958; */
   font-size: 0.7em;
-  align-self: flex-start;
+  /* Перенесено в B-4 */
+  /* align-self: flex-start;  чтобы бейдж не растягивался по всей высоте */
   padding: 0.3rem 0.45rem 0.35rem 0.45rem;
 }
 #btn-notifications .btn-link {
@@ -177,7 +178,12 @@ nav a.header-refresh:hover {
   text-decoration: none;
   opacity: 1;
 }
-
+/* Для сверхмалых экранов */
+#nav-profile ul.d-sm-none a {
+  padding-left: 0;
+  color: #252830;
+  font-weight: 500;
+}
 /* Общий контейнер */
 
 /* Боковое меню */
@@ -366,4 +372,32 @@ nav a.header-refresh:hover {
   background-attachment: fixed;
   background-position: center;
   background-color: #e5e9ec;
+}
+
+/* Скрытие формы поиска для малых экранов */
+@media(max-width: 575px) {
+  #search {
+    display: none;
+  }
+  /* #btn-notifications,
+  #btn-notifications > button {
+    width: 100%;
+    text-align: left;
+  } */
+  #btn-notifications > button {
+    /* отмена предыдущего значения, чтобы не растягивалось по всей длине */
+    flex: 0 0 auto;
+  }
+  #notification-list {
+    margin: 0.5rem;
+    margin-left: 0.6rem;
+    background-color: #e5e9ec;
+  }
+  #notification-list a {
+    background-color: #fff;
+    opacity: 1;
+  }
+  #notification-list .notification-message {
+    min-width: 8rem;
+  }
 }

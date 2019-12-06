@@ -40,16 +40,25 @@
                       aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-  
-            <a href="#" class="header-refresh ml-auto btn btn-link" role="button"
+
+              <!-- Значок Refresh - обновление в навигации -->
+            <a href="#" class="header-buttons ml-auto btn btn-link" role="button"
                 data-toggle="tooltip" data-placement="bottom" data-delay="500" title="Refresh data">
                 <!-- B-4 рекомендует использовать span вместо i в font-awesome -->
               <span class="fa fa-repeat"></span>
             </a>
-  
+
+            <!-- Значок поиска в навигации для малых экранов -->
+            <!-- Порядок вывода изменен, т.к. значок поиска появляется только на малых экранах -->
+            <a href="#" id="search-icon" class="header-buttons ml-3 btn btn-link d-sm-none"
+              title="Display search bar" data-toggle="tooltip" data-placement="bottom" data-delay="500">
+              <span class="fa fa-search" aria-hidden="true"></span>
+            </a>
+
           </div>
   
-          <form id="search" class="col-sm-3 d-none d-sm-block" role="search">
+          <!-- Нельзя использовать d-none, т.к. оно с !important -->
+          <form id="search" class="col-sm-3 d-sm-block" role="search">
             <!-- Псевдокласс CSS :focus-within меняет стиль родительского элемента, если внутри него какой-либо элемент получает фокус -->
             <!-- Только новые браузеры !!! -->
             <div class="input-group transition">
@@ -66,13 +75,13 @@
           <div id="nav-menu" class="collapse navbar-collapse justify-content-end">
             <ul class="nav navbar-nav">
               <li class="nav-item">
-                <div id="btn-notifications" class="btn-group">
+                <div id="btn-notifications" class="btn-group d-flex flex-wrap">
                   
-                  <button type="button" class="btn btn-link dropdown-toggle caret-off"
-                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Notifications
-                  </button>
-                  <span class="badge badge-pill badge-danger">3</span>
+                    <button type="button" class="btn btn-link dropdown-toggle caret-off align-self-start"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span>Notifications</span>
+                    </button>
+                    <span class="badge badge-pill badge-danger align-self-start">3</span>
   
                   <!-- Класс .dropdown-menu-right - меню расположено справа, т.е. выпадение левее -->
                   <ul id="notification-list" class="dropdown-menu dropdown-menu-right">
@@ -114,8 +123,8 @@
               </li>
             </ul>
   
-            <div id="nav-profile" class="btn-group">
-              <button type="button" class="btn btn-link dropdown-toggle caret-off"
+            <div id="nav-profile" class="btn-group d-flex">
+              <button type="button" class="btn btn-link dropdown-toggle caret-off d-none d-sm-block"
                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img src="imgs/jon.png" alt="Jon" class="img-thumbnail rounded-circle">
               </button>
@@ -132,6 +141,19 @@
                   <a href="#" class="transition">Logout</a>
                 </li>
               </ul>
+              <!-- Для сверхмалых экранов -->
+              <ul class="d-sm-none nav navbar-nav">
+                <li>
+                  <a href="#" class="transition">Profile</a>
+                </li>
+                <li>
+                  <a href="#" class="transition">Settings</a>
+                </li>
+                <li>
+                  <a href="#" class="transition">Logout</a>
+                </li>
+              </ul>
+
             </div>
           </div>
     </nav>

@@ -14,6 +14,22 @@ $(document).ready(function() {
     }
   });
 
+  // Показ поискового меню на малых экранах
+  $('#search-icon').on('click', function(e) {
+    e.preventDefault();
+    // $('#search').css('display', 'flex');
+    $('#search').show();
+    // невозможно сделать slideUp, т.к. в B-4 используется flexbox
+    // $('#search').slideUp('fast');
+    $('input:first', '#search').focus();
+  });
+  // Убираем строку поиска на малых экранах
+  $('input', '#search').on('blur', function(e) {
+    if ($("#search-icon").is(':visible')) {
+      // $("#search").css('display', 'none');
+      $('#search').hide();
+    }
+  });
   // Модуль Easy Pie Chart
   $('.round-chart').easyPieChart({
     // Цвет шкалы или false, чтобы отключить
