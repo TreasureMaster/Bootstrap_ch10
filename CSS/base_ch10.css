@@ -400,4 +400,20 @@ nav a.header-buttons:hover {
   #notification-list .notification-message {
     min-width: 8rem;
   }
+  #nav-profile .dropdown-divider {
+    height: 0.1rem;
+    margin: 0.9rem 0;
+    /* overflow: hidden; */
+    background-color: #e5e5e5;
+  }
+  /* выравнивание круговых диаграмм */
+  .round-chart,
+  .round-chart canvas {
+    display: block;
+    margin: auto;
+  }
+  .round-chart + .round-chart {
+    margin-top: 2rem;
+    float: none;
+  }
 }
