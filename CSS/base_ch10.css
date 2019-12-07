@@ -374,6 +374,11 @@ nav a.header-buttons:hover {
   background-color: #e5e9ec;
 }
 
+/* Стили области прокрутки */
+#content {
+  height: 25em;
+  overflow: auto;
+}
 /* Скрытие формы поиска для малых экранов */
 @media(max-width: 575px) {
   #search {

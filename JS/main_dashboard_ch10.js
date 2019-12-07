@@ -296,4 +296,11 @@ $(document).ready(function() {
       color: '#676f84'
     }]
   });
+
+  // Карусель
+  // $('.carousel').carousel();
+  // Перейти к слайду 2
+  // $('.carousel').carousel(2);
+  // перейти к следующему слайду next (или предыдущему prev)
+  // $('.carousel').carousel('next');
 });
